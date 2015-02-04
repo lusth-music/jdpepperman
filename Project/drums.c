@@ -29,12 +29,15 @@ main()
 	openOutput("drums.rra",0,0);
 
 	int i;
+	startMeasure();
 	for (i = 0; i < 4; i++){
 		spot = getLocation();
 		drumkitHHClosed(1,1,	"--------","--------",SX); setLocation(spot);
-		drumkitSnare(1,1,	"--------","----x---",SX); setLocation(spot);
-		drumkitKick(1,3,	"x--x--x-","--x----x",SX); //that 3 changes amp
+		drumkitSnare(1,1,	"--------","-----x--",SX); setLocation(spot);
+		drumkitKick(1,2,	"xx--x--x","---x----",SX); //that 3 changes amp
+		checkMeasure();
 	}
+	drumkitKick(1,2,"x-x-----",SX);
 	closeOutput();
 
 	return 0;
