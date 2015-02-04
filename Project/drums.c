@@ -31,9 +31,9 @@ main()
 	int i;
 	for (i = 0; i < 4; i++){
 		spot = getLocation();
-		drumkitHHClosed(1,1,	"----------------",SX); setLocation(spot);
-		drumkitSnare(1,1,	"-x--x----x--x---",SX); setLocation(spot);
-		drumkitKick(1,3,	"x-xx------xx---x",SX); //that 3 changes amp
+		drumkitHHClosed(1,1,	"--------","--------",SX); setLocation(spot);
+		drumkitSnare(1,1,	"--------","----x---",SX); setLocation(spot);
+		drumkitKick(1,3,	"x--x--x-","--x----x",SX); //that 3 changes amp
 	}
 	closeOutput();
 

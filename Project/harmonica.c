@@ -27,7 +27,7 @@ main()
 	instrument = readScale(dir,base);
 
 	setTempo(200);
-	setTime(3,4);
+	setTime(4,4);
 	setStride(0.05);
 	//setSustain(0.99995);
 	setAmplitude(0.3);
@@ -51,20 +51,20 @@ main()
 //	}
 	
 	for (i=0; i<2; i++) {
-		b(5,I,instrument,octave-1, "xx-x", SX);
-		b(1,Hd,instrument,octave, "xxx", SX);
+		b(5,Q,instrument,octave-1, "xx-x", SX);
+		b(1,H,instrument,octave, "xxx", SX);
 		rest(Q);
-		b(1,I,instrument,octave, "xxx", SX);
-		b(4,Hd,instrument,octave-1, "xxx", SX);
+		b(1,Q,instrument,octave, "xxx", SX);
+		b(4,H,instrument,octave-1, "xxx", SX);
 		rest(Q);
-		b(4,I,instrument,octave-1, "xxx", SX);
-		b(6,Hd,instrument,octave-1, "xxx", SX);
+		b(4,Q,instrument,octave-1, "xxx", SX);
+		b(6,H,instrument,octave-1, "xxx", SX);
 		rest(Q);
-		b(6,I,instrument,octave-1, "xxx", SX);
-		b(5,Hd,instrument,octave-1, "xxx", SX);
+		b(6,Q,instrument,octave-1, "xxx", SX);
+		b(5,H,instrument,octave-1, "xxx", SX);
 		rest(Q);
 	}	
-	b(5,I,instrument,octave-1, "xx-x", SX);
+	b(5,Q,instrument,octave-1, "xx-x", SX);
 	setSustain(0.99995);
 	cpower2(1, W, instrument, octave);
 

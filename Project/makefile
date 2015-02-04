@@ -1,7 +1,7 @@
 #Place the names of all your tracks here (as RRA filenames)
 
-RRA = project.rra
-SRRA = s-project.rra
+RRA = harmonica.rra bass.rra drums.rra 
+SRRA = s-harmonica.rra
 INCLUDE=/usr/local/include/songlib/
 LIB=/usr/local/lib/
 
@@ -22,8 +22,8 @@ play	: $(RRA)
 playmix : mix.rra
 		rplay mix.rra
 
-s-project.rra : project.rra
-		rrastereo -r project.rra s-project.rra
+s-harmonica.rra : harmonica.rra
+		rrastereo -r harmonica.rra s-harmonica.rra
 
 playmaster:  $(SRRA)
 	rrafastmixer $(SRRA) | rramaster ! rplay
