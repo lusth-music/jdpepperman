@@ -7,7 +7,7 @@
 
 #define dir "/usr/local/share/samples/"
 //#define base "piano/bright_"
-#define base "bass/campbell-drawn_"
+#define base "bass-acoustic/campbell-drawn_"
 
 /* change PROGRAM_NAME and PROGRAM_VERSION appropriately */
 
