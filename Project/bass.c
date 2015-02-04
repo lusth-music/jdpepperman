@@ -7,7 +7,7 @@
 
 #define dir "/usr/local/share/samples/"
 //#define base "piano/bright_"
-#define base "bass-acoustic/campbell-drawn_"
+#define base "bass-acoustic/adrian-drawn_"
 
 /* change PROGRAM_NAME and PROGRAM_VERSION appropriately */
 
@@ -20,7 +20,7 @@ int
 main()
 {
 	int instrument;
-	int octave = 5;
+	int octave = 3;
 
 	songInit();
 
@@ -35,20 +35,6 @@ main()
 	openOutput("bass.rra",0,0);
 
 	int i;
-//	for (i=0; i<2; i++) {
-//		setSustain(0.5);
-//		b(5,H,instrument,octave-1, "x---", "-x--", "--x-", SX);
-//		b(5,H,instrument,octave-1, "---x", "x---", "--x-", SX);
-//		//b(chord, duration[whole(w), half(h), quarter(q), eighth(i), sixteenth(s), thirtysecond(t)], instrument, octave, which notes to play, SX is the terminator)
-//		setSustain(0.99965);
-//		b(1,W, instrument, octave, "xxxx", "xxxx", "xxxx", SX);
-//		setSustain(0.5);
-//		b(4,H, instrument, octave-1, "x---", "---x", "x---", SX);
-//		b(4,H, instrument, octave-1, "-x--", "--x-", "---x", SX);
-//		//ci[1-6)
-//		setSustain(0.99965);
-//		b(6, W, instrument, octave-1, "x-xx", "---", "x-xx", SX);
-//	}
 	setSustain(0.99993);
 	
 	for (i=0; i<2; i++) {
