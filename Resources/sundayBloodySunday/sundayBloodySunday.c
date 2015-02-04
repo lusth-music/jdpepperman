@@ -26,16 +26,18 @@ main()
 	setStride(0.05);
 	setSustain(0.99995);
 	setAmplitude(0.4);
-
+	setPrimaryEmphasis(1);
+	setSecondaryEmphasis(1);
 	openOutput("sundayBloodySunday.rra",0,0);
 
 	spot = getLocation();
 	drumkitSnare(1,1,	"----------------------------x-x-",SX); 
 	
 	spot = getLocation();
-	drumkitHHClosed(1,1,	"-----x-x---x-x-x-x-x-x-x-x-x-----","-x-x-x-x-x-x-----x-x-x-x-x-x-----",SX); setLocation(spot);
-	drumkitSnare(1,1,	"-x-x-----x-------------------x-x-","-------------x-x-------------x-x-",SX); setLocation(spot);
-	drumkitKick(1,3,	"-x-------x-------x-------x-------","-x-------x-------x-------x-------",SX); //that 3 changes amp
+	//drumkitHHClosed(1,1,	"-----x-x---x-x-x-x-x-x-x-x-x-----","-x-x-x-x-x-x-----x-x-x-x-x-x-----",SX); setLocation(spot);
+	drumkitSnare(1,1,	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",SX); setLocation(spot);
+	//drumkitSnare(1,1,	"-x-x-----x-------------------x-x-","-------------x-x-------------x-x-",SX); setLocation(spot);
+	//drumkitKick(1,3,	"-x-------x-------x-------x-------","-x-------x-------x-------x-------",SX); //that 3 changes amp
 
 	closeOutput();
 
