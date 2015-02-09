@@ -29,8 +29,7 @@ main()
 	setTempo(200);
 	setTime(4,4);
 	setStride(0.05);
-	//setSustain(0.99995);
-	setAmplitude(0.05);
+	setAmplitude(0.15);
 
 	openOutput("bass.rra",0,0);
 
