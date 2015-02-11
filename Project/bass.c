@@ -16,6 +16,24 @@ char *PROGRAM_VERSION = "0.01";
 
 static int last = 0;
 
+static void
+intro(int instrument, int octave)
+{
+	setSustain(0.99993);
+	
+	b(1,W,instrument,octave, "x--", SX);
+	b(4,W,instrument,octave, "x--", SX);
+	b(6,W,instrument,octave, "x--", SX);
+	b(5,W,instrument,octave, "x--", SX);
+}
+
+static void
+outro(int instrument, int octave)
+{
+	b(5,Q,instrument,octave, "x--", SX);
+	b(1, W, instrument, octave+1, "x--", SX);	
+}
+
 int
 main()
 {
@@ -32,18 +50,12 @@ main()
 	setAmplitude(0.15);
 
 	openOutput("bass.rra",0,0);
-
-	int i;
-	setSustain(0.99993);
 	
+	int i;
 	for (i=0; i<2; i++) {
-		b(1,W,instrument,octave, "x--", SX);
-		b(4,W,instrument,octave, "x--", SX);
-		b(6,W,instrument,octave, "x--", SX);
-		b(5,W,instrument,octave, "x--", SX);
-	}	
-	b(5,Q,instrument,octave, "x--", SX);
-	b(1, W, instrument, octave+1, "x--", SX);
+		intro(instrument, octave);
+	}
+	outro(instrument, octave);
 
 	closeOutput();
 

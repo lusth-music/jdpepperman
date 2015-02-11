@@ -16,6 +16,36 @@ char *PROGRAM_VERSION = "0.01";
 
 static int last = 0;
 
+static void
+intro(int instrument, int octave)
+{
+	int i;
+	startMeasure();
+	b(5,I,instrument,octave-1, "xx-x", SX);
+	b(1,Hd,instrument,octave, "xxx", SX);
+	rest(Q-I); // 7/8 beats
+	b(1,I,instrument,octave, "xxx", SX);
+	b(4,Hd,instrument,octave-1, "xxx", SX);
+	rest(Q-I);
+	b(4,I,instrument,octave-1, "xxx", SX);
+	b(6,Hd,instrument,octave-1, "xxx", SX);
+	rest(Q-I);
+	b(6,I,instrument,octave-1, "xxx", SX);
+	b(5,Hd,instrument,octave-1, "xxx", SX);
+	rest(Q-I);
+	checkMeasure();
+	
+}
+
+static void
+outro(int instrument, int octave)
+{
+	b(5,Q,instrument,octave-1, "xx-x", SX);
+	setSustain(0.99995);
+	cpower2(1, W, instrument, octave);
+	
+}
+
 int
 main()
 {
@@ -35,25 +65,10 @@ main()
 	openOutput("piano.rra",0,0);
 
 	int i;
-	startMeasure();
 	for (i=0; i<2; i++) {
-		b(5,I,instrument,octave-1, "xx-x", SX);
-		b(1,Hd,instrument,octave, "xxx", SX);
-		rest(Q-I); // 7/8 beats
-		b(1,I,instrument,octave, "xxx", SX);
-		b(4,Hd,instrument,octave-1, "xxx", SX);
-		rest(Q-I);
-		b(4,I,instrument,octave-1, "xxx", SX);
-		b(6,Hd,instrument,octave-1, "xxx", SX);
-		rest(Q-I);
-		b(6,I,instrument,octave-1, "xxx", SX);
-		b(5,Hd,instrument,octave-1, "xxx", SX);
-		rest(Q-I);
-		checkMeasure();
-	}	
-	b(5,Q,instrument,octave-1, "xx-x", SX);
-	setSustain(0.99995);
-	cpower2(1, W, instrument, octave);
+		intro(instrument, octave);
+	}
+	outro(instrument, octave);
 
 	closeOutput();
 

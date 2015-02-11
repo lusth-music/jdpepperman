@@ -12,10 +12,29 @@
 char *PROGRAM_NAME = "drums";
 char *PROGRAM_VERSION = "0.01";
 
+static void
+intro()
+{
+	int spot;
+	int i;
+	startMeasure();
+	spot = getLocation();
+	drumkitHHClosed(1,1,	"--------","--------",SX); setLocation(spot);
+	drumkitSnare(1,1,	"--------","-----x--",SX); setLocation(spot);
+	drumkitKick(1,2,	"xx--x--x","---x----",SX); //that 3 changes amp
+	checkMeasure();
+	
+}
+
+static void
+outro()
+{
+	drumkitKick(1,2,"x-x-----",SX);
+}
+
 int
 main()
 {
-	int spot;
 
 	songInit();
 
@@ -29,15 +48,12 @@ main()
 	openOutput("drums.rra",0,0);
 
 	int i;
-	startMeasure();
+
 	for (i = 0; i < 4; i++){
-		spot = getLocation();
-		drumkitHHClosed(1,1,	"--------","--------",SX); setLocation(spot);
-		drumkitSnare(1,1,	"--------","-----x--",SX); setLocation(spot);
-		drumkitKick(1,2,	"xx--x--x","---x----",SX); //that 3 changes amp
-		checkMeasure();
+		intro();
 	}
-	drumkitKick(1,2,"x-x-----",SX);
+	outro();
+
 	closeOutput();
 
 	return 0;
