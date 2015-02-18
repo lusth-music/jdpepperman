@@ -16,7 +16,6 @@ static void
 intro()
 {
 	int spot;
-	int i;
 	startMeasure();
 	spot = getLocation();
 	drumkitHHClosed(1,1,	"--------","--------",SX); setLocation(spot);

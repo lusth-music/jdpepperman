@@ -68,6 +68,14 @@ main()
 	for (i=0; i<2; i++) {
 		intro(instrument, octave);
 	}
+	//verse
+	//chorus
+	//verse
+	//chorus
+	//bridge
+	//verse
+	//chorus
+	//chorus
 	outro(instrument, octave);
 
 	closeOutput();
