@@ -16,14 +16,20 @@ all : $(RRA)
 mix.rra		: $(RRA)
 		rrafastmixer $(RRA) > mix.rra
 
-play	: $(RRA)
-		rplay $(RRA)
+play	: mix.rra
+		rplay mix.rra
 
 playmix : mix.rra
 		rplay mix.rra
 
-s-piano.rra : piano.rra
-		rrastereo -r piano.rra s-piano.rra
+playpiano : piano.rra
+		rplay piano.rra
+
+playbass : bass.rra
+		rplay bass.rra
+
+playdrums : drums.rra
+		rplay drums.rra
 
 playmaster:  $(SRRA)
 	rrafastmixer $(SRRA) | rramaster ! rplay
