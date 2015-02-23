@@ -14,12 +14,9 @@
 char *PROGRAM_NAME = "piano";
 char *PROGRAM_VERSION = "0.01";
 
-static int last = 0;
-
 static void
 intro(int instrument, int octave)
 {
-	int i;
 	startMeasure();
 	b(5,I,instrument,octave-1, "xx-x", SX);
 	b(1,Hd,instrument,octave, "xxx", SX);
@@ -35,6 +32,43 @@ intro(int instrument, int octave)
 	rest(Q-I);
 	checkMeasure();
 	
+}
+
+static void
+verse(int instrument, int octave)
+{
+	startMeasure();
+	b(4, H, instrument, octave-1, "---x", SX);
+	b(4, Q, instrument, octave-1, "--x-", SX);
+	b(4, H, instrument, octave-1, "-x--", SX);
+	b(4, Q, instrument, octave-1, "x---", SX);
+	
+	b(4, Q, instrument, octave-1, "-x--", SX);
+	b(4, Q, instrument, octave-1, "--x-", SX);
+
+	b(6, H, instrument, octave-1, "---x", SX);
+	b(6, Q, instrument, octave-1, "--x-", SX);
+	b(6, H, instrument, octave-1, "-x--", SX);
+	b(6, Q, instrument, octave-1, "x---", SX);
+
+	b(6, Q, instrument, octave-1, "-x--", SX);
+	b(6, Q, instrument, octave-1, "--x-", SX);
+
+	b(1, H, instrument, octave, "---x", SX);
+	b(1, Q, instrument, octave, "--x-", SX);
+	b(1, H, instrument, octave, "-x--", SX);
+	b(1, Q, instrument, octave, "x---", SX);
+
+	b(1, Q, instrument, octave, "-x--", SX);
+	b(1, Q, instrument, octave, "--x-", SX);
+
+	b(5, H, instrument, octave-1, "---x", SX);
+	b(5, Q, instrument, octave-1, "--x-", SX);
+	b(5, H, instrument, octave-1, "-x--", SX);
+	b(5, Q, instrument, octave-1, "x---", SX);
+
+	b(5, Q, instrument, octave-1, "-x--", SX);
+	b(5, Q, instrument, octave-1, "--x-", SX);
 }
 
 static void
@@ -64,11 +98,17 @@ main()
 
 	openOutput("piano.rra",0,0);
 
+	goto verse;
+
 	int i;
+	intro: 
 	for (i=0; i<2; i++) {
 		intro(instrument, octave);
 	}
 	//verse
+	verse: 
+	verse(instrument, octave);
+	goto end;
 	//chorus
 	//verse
 	//chorus
@@ -77,7 +117,8 @@ main()
 	//chorus
 	//chorus
 	outro(instrument, octave);
-
+	
+	end:
 	closeOutput();
 
 	return 0;
