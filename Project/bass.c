@@ -30,7 +30,16 @@ intro(int instrument, int octave)
 static void
 verse(int instrument, int octave)
 {
-	b(6, W, instrument, octave, "x--", SX);
+	goto start;
+	startMeasure();
+	b(6, W+W, instrument, octave, "x--", SX);
+	checkMeasure();
+	b(4, W+W, instrument, octave, "x--", SX);
+	start:
+	b(1, Wd, instrument, octave, "x--", SX);
+	b(5, Q, instrument, octave, "x--", SX);
+	b(4, Q, instrument, octave, "O--", SX);
+	b(5, W+W, instrument, octave, "x--", SX);
 }
 
 static void
