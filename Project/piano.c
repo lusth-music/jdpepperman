@@ -159,8 +159,8 @@ main()
 	setTempo(150);
 	setTime(8,4);
 	setStride(0.05);
-	//setSustain(0.99995);
 	setAmplitude(0.3);
+	setSustain(0.99995);
 
 	openOutput("piano.rra",0,0);
 

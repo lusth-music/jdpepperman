@@ -28,6 +28,12 @@ intro(int instrument, int octave)
 }
 
 static void
+verse(int instrument, int octave)
+{
+	b(6, W, instrument, octave, "x--", SX);
+}
+
+static void
 outro(int instrument, int octave)
 {
 	b(5,Q,instrument,octave, "x--", SX);
@@ -44,19 +50,29 @@ main()
 
 	instrument = readScale(dir,base);
 
-	setTempo(200);
-	setTime(4,4);
+	setTempo(150);
+	setTime(8,4);
 	setStride(0.05);
 	setAmplitude(0.15);
+	setSustain(0.99995);
 
 	openOutput("bass.rra",0,0);
+	goto verse;
 	
 	int i;
 	for (i=0; i<2; i++) {
 		intro(instrument, octave);
 	}
+
+	verse:
+	for (i=0; i<4; i++) {
+		verse(instrument, octave);
+	}
+	goto end;
+
 	outro(instrument, octave);
 
+	end:
 	closeOutput();
 
 	return 0;

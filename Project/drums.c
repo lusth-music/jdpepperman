@@ -39,20 +39,27 @@ main()
 
 	//setSlopTiming(W);	
 
-	setTempo(200);
-	setTime(4,4);
+	setTempo(150);
+	setTime(8,4);
 	setStride(0.05);
 	setSustain(0.99995);
 	setAmplitude(0.4);
 	openOutput("drums.rra",0,0);
 
-	int i;
+	goto verse;
 
+	int i;
+	intro:
 	for (i = 0; i < 4; i++){
 		intro();
 	}
+	verse:
+	
+	goto end;
+	outro:
 	outro();
 
+	end:
 	closeOutput();
 
 	return 0;
