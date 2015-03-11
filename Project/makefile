@@ -1,7 +1,7 @@
 #Place the names of all your tracks here (as RRA filenames)
 
 RRA = piano.rra drums.rra bass.rra lpiano.rra
-#RRA = piano.rra bass.rra lpiano.rra
+#RRA = piano.rra drums.rra bass.rra lpiano.rra guitar.rra
 SRRA = s-piano.rra
 INCLUDE=/usr/local/include/songlib/
 LIB=/usr/local/lib/
@@ -41,6 +41,9 @@ playlpiano : lpiano.rra
 playrpiano : piano.rra
 		rplay piano.rra
 
+playguitar : guitar.rra
+		rplay guitar.rra
+
 playmaster:  $(SRRA)
 	rrafastmixer $(SRRA) | rramaster ! rplay
 
@@ -56,4 +59,4 @@ rraidentity : rraidentity.c
 .PHONY : clean
 
 clean :
-		rm -f $(RRA) $(SRRA) master.rra mix.rra master.mp3
+		rm -f $(RRA) $(SRRA) master.rra mix.rra pianomix.rra master.mp3
