@@ -13,22 +13,32 @@ char *PROGRAM_NAME = "drums";
 char *PROGRAM_VERSION = "0.01";
 
 static void
-intro()
+verse()
 {
 	int spot;
-	startMeasure();
 	spot = getLocation();
-	drumkitHHClosed(1,1,	"--------","--------",SX); setLocation(spot);
-	drumkitSnare(1,1,	"--------","-----x--",SX); setLocation(spot);
-	drumkitKick(1,2,	"xx--x--x","---x----",SX); //that 3 changes amp
+	startMeasure();
+	drumkitHHClosed(1, 1,	"-x-----x","-x----xx","xx-----x","-x----xx","xx-----x","-x----xx","xx-----x","---xxxxx", SX); setLocation(spot);
+	drumkitSnare(1, 1,	"----x---","----x---","----x---","----x---","----x---","----x---","----x---","-x--x---", SX); setLocation(spot);
+	drumkitKick(1, 2,	"x-xx----","--xx----","x-xx----","--xx----","x-xx----","--xx----","x-xx----","--xx----", SX);
 	checkMeasure();
-	
+}
+
+static void
+intro()
+{
+	rest(W+W+W+W);
+	rest(W+W+W+W);
+	rest(W+W+W+W);
+	rest(W+W+W+W);
+	rest(W+W+W+W);
+	rest(W+W+W+W);
+	verse();
 }
 
 static void
 outro()
 {
-	drumkitKick(1,2,"x-x-----",SX);
 }
 
 int
@@ -39,23 +49,20 @@ main()
 
 	//setSlopTiming(W);	
 
-	setTempo(150);
+	setTempo(200);
 	setTime(8,4);
 	setStride(0.05);
 	setSustain(0.99995);
 	setAmplitude(0.4);
 	openOutput("drums.rra",0,0);
 
-	goto verse;
-
 	int i;
-	intro:
-	for (i = 0; i < 4; i++){
-		intro();
-	}
+	intro();
 	verse:
+	for (i=0; i<2; i++) {
+		verse();
+	}
 	
-	goto end;
 	outro:
 	outro();
 

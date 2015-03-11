@@ -22,7 +22,34 @@ verse(int instrument, int octave)
 	rest(Q);
 	b(6, Q, instrument, octave, "x--", SX);
 	b(6, Q, instrument, octave, "-x-", SX);
-	b(6, Q, instrument, octave, "--x", SX);
+	b(6, W+Q, instrument, octave, "--x", SX);
+
+	rest(Q);
+	b(4, Q, instrument, octave, "x--", SX);
+	b(4, Q, instrument, octave, "-x-", SX);
+	b(4, W+Q, instrument, octave, "--x", SX);
+
+	rest(Q);
+	b(1, Q, instrument, octave, "x--", SX);
+	b(1, Q, instrument, octave, "-x-", SX);
+	b(1, W+Q, instrument, octave, "--x", SX);
+
+	rest(Q);
+	b(5, Q, instrument, octave, "x--", SX);
+	b(5, Q, instrument, octave, "-x-", SX);
+	b(5, W+Q, instrument, octave, "--x", SX);
+
+}
+
+static void 
+intro(int instrument, int octave)
+{
+	rest(W+W+W+W);
+	rest(W+W+W+W);
+	rest(W+W+W+W);
+	rest(W+W+W+W);
+	verse(instrument, octave);
+	verse(instrument, octave);
 }
 
 int
@@ -35,7 +62,7 @@ main()
 
 	instrument = readScale(dir,base);
 
-	setTempo(150);
+	setTempo(200);
 	setTime(8,4);
 	setStride(0.05);
 	setAmplitude(0.3);
@@ -43,20 +70,17 @@ main()
 
 	openOutput("lpiano.rra",0,0);
 
-	goto verse;
-
 	int i;
+
+	intro:
+	intro(instrument, octave);
 	//verse
 	//verse(instrument, octave);
-	rest(W+W+W+W);
-	rest(W+W+W+W);
-	rest(W+W+W+W);
-	rest(W+W+W+W);
 	verse: 
 	for (i=0; i<2; i++) {
 		verse(instrument, octave);
 	}
-	goto end;
+
 	//chorus
 	//verse
 	//chorus

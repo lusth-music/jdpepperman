@@ -20,6 +20,24 @@ static void
 verse(int instrument, int octave)
 {
 	startMeasure();
+	b(6, Wd, instrument, octave, "x--", SX);
+	b(6, H, instrument, octave, "-x-", SX);
+	checkMeasure();
+
+	b(4, Wd, instrument, octave, "x--", SX);
+	b(5, H, instrument, octave, "x--", SX);
+
+	b(1, Wd, instrument, octave, "x--", SX);
+	b(5, Q, instrument, octave, "x--", SX);
+	b(4, Q, instrument, octave, "-x-", SX);
+	b(5, W+W, instrument, octave, "x--", SX);
+}
+
+static void
+intro(int instrument, int octave)
+{
+	rest(W+W+W+W);
+	rest(W+W+W+W);
 	b(6, W+W, instrument, octave, "x--", SX);
 	checkMeasure();
 	b(4, W+W, instrument, octave, "x--", SX);
@@ -27,6 +45,8 @@ verse(int instrument, int octave)
 	b(5, Q, instrument, octave, "x--", SX);
 	b(4, Q, instrument, octave, "-x-", SX);
 	b(5, W+W, instrument, octave, "x--", SX);
+	verse(instrument, octave);
+	verse(instrument, octave);
 }
 
 int
@@ -39,26 +59,22 @@ main()
 
 	instrument = readScale(dir,base);
 
-	setTempo(150);
+	setTempo(200);
 	setTime(8,4);
 	setStride(0.05);
 	setAmplitude(0.15);
 	setSustain(0.99995);
 
 	openOutput("bass.rra",0,0);
-	goto verse;
 	
 	int i;
+	intro:
+	intro(instrument, octave);
 
-	rest(W+W+W+W);
-	rest(W+W+W+W);
 	verse:
-	for (i=0; i<3; i++) {
+	for (i=0; i<2; i++) {
 		verse(instrument, octave);
 	}
-	goto end;
-
-	outro(instrument, octave);
 
 	end:
 	closeOutput();
