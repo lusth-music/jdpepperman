@@ -7,26 +7,22 @@
 
 #define dir "/usr/local/share/samples/"
 //#define base "piano/bright_"
-#define base "bass-acoustic/adrian-drawn_"
+#define base "piano/bright_"
 
 /* change PROGRAM_NAME and PROGRAM_VERSION appropriately */
 
-char *PROGRAM_NAME = "bass";
+char *PROGRAM_NAME = "lpiano";
 char *PROGRAM_VERSION = "0.01";
-
-static int last = 0;
 
 static void
 verse(int instrument, int octave)
 {
+	//6,4,1,5
 	startMeasure();
-	b(6, W+W, instrument, octave, "x--", SX);
-	checkMeasure();
-	b(4, W+W, instrument, octave, "x--", SX);
-	b(1, Wd, instrument, octave, "x--", SX);
-	b(5, Q, instrument, octave, "x--", SX);
-	b(4, Q, instrument, octave, "-x-", SX);
-	b(5, W+W, instrument, octave, "x--", SX);
+	rest(Q);
+	b(6, Q, instrument, octave, "x--", SX);
+	b(6, Q, instrument, octave, "-x-", SX);
+	b(6, Q, instrument, octave, "--x", SX);
 }
 
 int
@@ -42,24 +38,33 @@ main()
 	setTempo(150);
 	setTime(8,4);
 	setStride(0.05);
-	setAmplitude(0.15);
+	setAmplitude(0.3);
 	setSustain(0.99995);
 
-	openOutput("bass.rra",0,0);
-	goto verse;
-	
-	int i;
+	openOutput("lpiano.rra",0,0);
 
+	goto verse;
+
+	int i;
+	//verse
+	//verse(instrument, octave);
 	rest(W+W+W+W);
 	rest(W+W+W+W);
-	verse:
-	for (i=0; i<3; i++) {
+	rest(W+W+W+W);
+	rest(W+W+W+W);
+	verse: 
+	for (i=0; i<2; i++) {
 		verse(instrument, octave);
 	}
 	goto end;
-
-	outro(instrument, octave);
-
+	//chorus
+	//verse
+	//chorus
+	//bridge
+	//verse
+	//chorus
+	//chorus
+	
 	end:
 	closeOutput();
 
