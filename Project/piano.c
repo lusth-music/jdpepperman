@@ -19,6 +19,8 @@ static void
 verse(int instrument, int octave)
 {
 	startMeasure();
+	
+	//6415
 
 	c(6, Hd, instrument, octave);
 	checkMeasure();
@@ -90,6 +92,21 @@ intro(int instrument, int octave)
 	}
 }
 
+static void
+chorus(int instrument, int octave)
+{
+	//4156
+	c(4, W, instrument, octave);
+	c(1, W, instrument, octave);
+	c(5, W, instrument, octave);
+	c(6, W, instrument, octave);
+	c(4, W, instrument, octave);
+	c(1, W, instrument, octave);
+	c(5, W, instrument, octave);
+	c(6, W, instrument, octave);
+
+}
+
 int
 main()
 {
@@ -107,7 +124,8 @@ main()
 	setSustain(0.99995);
 
 	openOutput("piano.rra",0,0);
-
+	
+	goto chorus;
 
 	int i;
 	intro: 
@@ -119,6 +137,9 @@ main()
 	}
 	//verse(instrument, octave);
 	//verse
+	chorus:
+	verse(instrument, octave);
+	chorus(instrument, octave);
 	//chorus
 	//bridge
 	//verse
