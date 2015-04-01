@@ -93,7 +93,7 @@ intro(int instrument, int octave)
 }
 
 static void
-chorus(int instrument, int octave)
+bridge(int instrument, int octave)
 {
 	//4156
 	c(4, W, instrument, octave);
@@ -104,6 +104,23 @@ chorus(int instrument, int octave)
 	c(1, W, instrument, octave);
 	c(5, W, instrument, octave);
 	c(6, W, instrument, octave);
+	
+	c(4, H, instrument, octave); 		backwards(1.0);
+	b(4, H, instrument, octave, "x--", SX); backwards(1.0);
+	c(4, H, instrument, octave); 		backwards(1.0);
+	b(4, H, instrument, octave, "x--", SX); backwards(1.0);
+	c(1, H, instrument, octave); 		backwards(1.0);
+	b(1, H, instrument, octave, "x--", SX); backwards(1.0);
+	c(1, H, instrument, octave); 		backwards(1.0);
+	b(1, H, instrument, octave, "x--", SX); backwards(1.0);
+	c(5, H, instrument, octave); 		backwards(1.0);
+	b(5, H, instrument, octave, "x--", SX); backwards(1.0);
+	c(5, H, instrument, octave); 		backwards(1.0);
+	b(5, H, instrument, octave, "x--", SX); backwards(1.0);
+	c(6, H, instrument, octave); 		backwards(1.0);
+	b(6, H, instrument, octave, "x--", SX); backwards(1.0);
+	c(6, H, instrument, octave); 		backwards(1.0);
+	b(6, H, instrument, octave, "x--", SX);
 
 }
 
@@ -125,7 +142,7 @@ main()
 
 	openOutput("piano.rra",0,0);
 	
-	goto chorus;
+	goto bridge;
 
 	int i;
 	intro: 
@@ -137,9 +154,9 @@ main()
 	}
 	//verse(instrument, octave);
 	//verse
-	chorus:
+	bridge:
 	verse(instrument, octave);
-	chorus(instrument, octave);
+	bridge(instrument, octave);
 	//chorus
 	//bridge
 	//verse
