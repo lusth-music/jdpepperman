@@ -1,0 +1,17 @@
+echo you may be asked for your local password ...
+TARGET=/usr/local/share/samples/guitar/
+sudo mkdir -p $TARGET
+echo converting flac to rra...
+for i in classical_a#1.flac classical_a#2.flac classical_a1.flac classical_a2.flac classical_a3.flac classical_b1.flac classical_b2.flac classical_b3.flac classical_c#1.flac classical_c#2.flac classical_c#3.flac classical_c1.flac classical_c2.flac classical_c3.flac classical_d#1.flac classical_d#2.flac classical_d1.flac classical_d2.flac classical_d3.flac classical_e1.flac classical_e2.flac classical_e3.flac classical_e4.flac classical_f#1.flac classical_f#2.flac classical_f#3.flac classical_f#4.flac classical_f2.flac classical_f3.flac classical_g#1.flac classical_g#2.flac classical_g#3.flac classical_g#4.flac classical_g2.flac classical_g3.flac; do
+    flac2rra $i
+    where=`dirname $i`
+    name=`basename $i .flac`
+    if [ $where = "." ]
+        then
+        sudo cp $name.rra $TARGET/
+    else
+        sudo mkdir -p $TARGET/$where
+        sudo cp $where/$name.rra $TARGET/$where/
+    fi
+    rm $i
+done
