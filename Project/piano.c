@@ -105,22 +105,22 @@ bridge(int instrument, int octave)
 	c(5, W, instrument, octave);
 	c(6, W, instrument, octave);
 	
-	c(4, H, instrument, octave); 		backwards(1.0);
-	b(4, H, instrument, octave, "x--", SX); backwards(1.0);
-	c(4, H, instrument, octave); 		backwards(1.0);
-	b(4, H, instrument, octave, "x--", SX); backwards(1.0);
-	c(1, H, instrument, octave); 		backwards(1.0);
-	b(1, H, instrument, octave, "x--", SX); backwards(1.0);
-	c(1, H, instrument, octave); 		backwards(1.0);
-	b(1, H, instrument, octave, "x--", SX); backwards(1.0);
-	c(5, H, instrument, octave); 		backwards(1.0);
-	b(5, H, instrument, octave, "x--", SX); backwards(1.0);
-	c(5, H, instrument, octave); 		backwards(1.0);
-	b(5, H, instrument, octave, "x--", SX); backwards(1.0);
-	c(6, H, instrument, octave); 		backwards(1.0);
-	b(6, H, instrument, octave, "x--", SX); backwards(1.0);
-	c(6, H, instrument, octave); 		backwards(1.0);
-	b(6, H, instrument, octave, "x--", SX);
+	//c(4, H, instrument, octave); 		backwards(1.0);
+	//b(4, H, instrument, octave, "x--", SX); backwards(1.0);
+	//c(4, H, instrument, octave); 		backwards(1.0);
+	//b(4, H, instrument, octave, "x--", SX); backwards(1.0);
+	//c(1, H, instrument, octave); 		backwards(1.0);
+	//b(1, H, instrument, octave, "x--", SX); backwards(1.0);
+	//c(1, H, instrument, octave); 		backwards(1.0);
+	//b(1, H, instrument, octave, "x--", SX); backwards(1.0);
+	//c(5, H, instrument, octave); 		backwards(1.0);
+	//b(5, H, instrument, octave, "x--", SX); backwards(1.0);
+	//c(5, H, instrument, octave); 		backwards(1.0);
+	//b(5, H, instrument, octave, "x--", SX); backwards(1.0);
+	//c(6, H, instrument, octave); 		backwards(1.0);
+	//b(6, H, instrument, octave, "x--", SX); backwards(1.0);
+	//c(6, H, instrument, octave); 		backwards(1.0);
+	//b(6, H, instrument, octave, "x--", SX);
 
 }
 
@@ -142,6 +142,7 @@ main()
 
 	openOutput("piano.rra",0,0);
 	
+	//v r v r b v r
 	goto bridge;
 
 	int i;
@@ -154,12 +155,17 @@ main()
 	}
 	//verse(instrument, octave);
 	//verse
-	bridge:
-	verse(instrument, octave);
-	bridge(instrument, octave);
 	//chorus
 	//bridge
+	bridge:
+	for (i=0; i<2; i++) {
+		bridge(instrument, octave);
+	}
+	goto end;
 	//verse
+	for (i=0; i<2; i++) {
+		verse(instrument, octave);
+	}
 	//chorus
 	//chorus
 	

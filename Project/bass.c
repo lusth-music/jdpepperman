@@ -34,6 +34,20 @@ verse(int instrument, int octave)
 }
 
 static void
+bridge(int instrument, int octave)
+{
+	//4156
+	b(4, W, instrument, octave, "x--", SX);
+	b(1, W, instrument, octave, "x--", SX);
+	b(5, W, instrument, octave, "x--", SX);
+	b(6, W, instrument, octave, "x--", SX);
+	b(4, W, instrument, octave, "x--", SX);
+	b(1, W, instrument, octave, "x--", SX);
+	b(5, W, instrument, octave, "x--", SX);
+	b(6, W, instrument, octave, "x--", SX);
+}
+
+static void
 intro(int instrument, int octave)
 {
 	rest(W+W+W+W);
@@ -66,6 +80,9 @@ main()
 	setSustain(0.99995);
 
 	openOutput("bass.rra",0,0);
+
+	//v r v r b v r
+	goto bridge;
 	
 	int i;
 	intro:
@@ -74,6 +91,12 @@ main()
 	verse:
 	for (i=0; i<2; i++) {
 		verse(instrument, octave);
+	}
+
+	bridge:
+
+	for (i=0; i<2; i++) {
+		bridge(instrument, octave);
 	}
 
 	end:

@@ -25,6 +25,23 @@ verse()
 }
 
 static void
+bridge()
+{
+	int spot;
+	spot = getLocation();
+	startMeasure();
+	drumkitHHClosed(1, 1,	"--------","--------","--------","--------","--------","--------","--------","--------", SX); setLocation(spot);
+	drumkitSnare(1, 1,	"----x---","--------","----x---","--------","----x---","--------","----x---","--------", SX); setLocation(spot);
+	drumkitKick(1, 2,	"x-----x-","x-------","x-----x-","x-------","x-----x-","x-------","x-----x-","x-------", SX); 
+
+	spot = getLocation();
+	drumkitHHClosed(1, 1,	"--------","--Xx--Xx","--------","--Xx--Xx","--------","--Xx--Xx","--------","--Xx-xXx", SX); setLocation(spot);
+	drumkitSnare(1, 1,	"----x---","--------","----x---","--------","----x---","--------","----x---","--------", SX); setLocation(spot);
+	drumkitKick(1, 2,	"x-----x-","x-------","x-----x-","x-------","x-----x-","x-------","x-----x-","x-------", SX);
+	checkMeasure();
+}
+
+static void
 intro()
 {
 	rest(W+W+W+W);
@@ -56,12 +73,16 @@ main()
 	setAmplitude(0.4);
 	openOutput("drums.rra",0,0);
 
+	goto bridge;
+
 	int i;
 	intro();
 	verse:
 	for (i=0; i<2; i++) {
 		verse();
 	}
+bridge:
+	bridge();
 	
 	outro:
 	outro();

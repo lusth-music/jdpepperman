@@ -41,6 +41,24 @@ verse(int instrument, int octave)
 
 }
 
+static void
+bridge(int instrument, int octave)
+{
+	//4156
+
+	b(4, Q, instrument, octave, "--x", SX); 		
+	b(4, Q, instrument, octave, "x--", SX); 
+	b(4, Q, instrument, octave, "-x-", SX); 		
+	b(4, Q, instrument, octave, "--x", SX); 
+	c(1, W, instrument, octave); 		
+	b(5, Q, instrument, octave, "--x", SX); 		
+	b(5, Q, instrument, octave, "x--", SX); 
+	b(5, Q, instrument, octave, "-x-", SX); 		
+	b(5, Q, instrument, octave, "--x", SX); 
+	c(6, W, instrument, octave); 		
+
+}
+
 static void 
 intro(int instrument, int octave)
 {
@@ -71,6 +89,7 @@ main()
 	openOutput("lpiano.rra",0,0);
 
 	int i;
+	goto bridge;
 
 	intro:
 	intro(instrument, octave);
@@ -85,7 +104,17 @@ main()
 	//verse
 	//chorus
 	//bridge
+bridge:
+	rest(W+W+W+W+W+W+W+W);
+	for (i=0;i<2;i++) {
+		bridge(instrument, octave);
+	}
+
+	goto end;
 	//verse
+	for (i=0; i<2; i++) {
+		verse(instrument, octave);
+	}
 	//chorus
 	//chorus
 	
