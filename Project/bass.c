@@ -34,7 +34,7 @@ verse(int instrument, int octave)
 }
 
 static void
-bridge(int instrument, int octave)
+chorus(int instrument, int octave)
 {
 	//4156
 	b(4, W, instrument, octave, "x--", SX);
@@ -63,6 +63,29 @@ intro(int instrument, int octave)
 	verse(instrument, octave);
 }
 
+static void
+bridge(int instrument, int octave)
+{
+	setTempo(100);
+	octave = octave + 1;
+	//6 1 5 4
+	setSustain(0.99992);
+	startMeasure();
+	rest(H-T);
+	b(6, H+T, instrument, octave, "x----", "-x---", "--x--", "---x-", SX);
+	b(6, H+Id, instrument, octave, "----x", "--x--", "x----", SX);
+	rest(H-Id);
+	b(5, Q, instrument, octave, "-x-", SX);
+	rest(Q);
+	b(5, Q, instrument, octave, "-x-", "-n-", SX);
+	b(5, Q, instrument, octave, "-x-", SX);
+	b(4, H, instrument, octave, "-x-", SX);
+	b(4, H, instrument, octave, "-d-", SX);
+	setSustain(0.99995);
+	checkMeasure();
+	setTempo(200);
+}
+
 int
 main()
 {
@@ -81,22 +104,33 @@ main()
 
 	openOutput("bass.rra",0,0);
 
-	//v r v r b v r
-	goto bridge;
-	
-	int i;
-	intro:
-	intro(instrument, octave);
+	//bridge(instrument, octave);
+	//goto end;
 
-	verse:
+	int i;
+	goto bridge;
+
+	//v r v r b v r
+	intro(instrument, octave);
 	for (i=0; i<2; i++) {
 		verse(instrument, octave);
 	}
-
-	bridge:
-
 	for (i=0; i<2; i++) {
-		bridge(instrument, octave);
+		chorus(instrument, octave);
+	}
+	for (i=0; i<2; i++) {
+		verse(instrument, octave);
+	}
+bridge:
+	for (i=0; i<2; i++) {
+		chorus(instrument, octave);
+	}
+	bridge(instrument, octave);
+	for (i=0; i<2; i++) {
+		verse(instrument, octave);
+	}
+	for (i=0; i<2; i++) {
+		chorus(instrument, octave);
 	}
 
 	end:

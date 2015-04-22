@@ -78,10 +78,19 @@ verse(int instrument, int octave)
 }
 
 static void
-bridge(int instrument, int octave)
+chorus(int instrument, int octave)
 {
 	//4156
 	rest(W+W+W+W+W+W+W+W);
+}
+
+static void
+bridge(int instrument, int octave)
+{
+	setTempo(100);
+	//6 1 5 4
+	rest(W+W+W+W);
+	setTempo(200);
 }
 
 static void
@@ -111,31 +120,32 @@ main()
 	setSustain(0.9995);
 
 	openOutput("guitar.rra",0,0);
-	//goto bridge;
 
 	int i;
-	intro: 
-	intro(instrument, octave);
+	goto bridge;
 
 	//v r v r b v r
-
-	//verse
-	verse: 
+	intro(instrument, octave);
 	for (i=0; i<2; i++) {
 		verse(instrument, octave);
 	}
-	//verse(instrument, octave);
-	//verse
-	//chorus
-	//bridge
+	for (i=0; i<2; i++) {
+		chorus(instrument, octave);
+	}
+	for (i=0; i<2; i++) {
+		verse(instrument, octave);
+	}
 bridge:
 	for (i=0; i<2; i++) {
-		bridge(instrument, octave);
+		chorus(instrument, octave);
 	}
-	
-	//verse
-	//chorus
-	//chorus
+	bridge(instrument, octave);
+	for (i=0; i<2; i++) {
+		verse(instrument, octave);
+	}
+	for (i=0; i<2; i++) {
+		chorus(instrument, octave);
+	}
 	
 	end:
 	closeOutput();
