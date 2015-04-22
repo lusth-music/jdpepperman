@@ -6,7 +6,6 @@
 
 
 #define dir "/usr/local/share/samples/"
-//#define base "piano/bright_"
 #define base "bass-acoustic/adrian-drawn_"
 
 /* change PROGRAM_NAME and PROGRAM_VERSION appropriately */
@@ -69,18 +68,18 @@ bridge(int instrument, int octave)
 	setTempo(100);
 	octave = octave + 1;
 	//6 1 5 4
-	setSustain(0.99992);
 	startMeasure();
 	rest(H-T);
 	b(6, H+T, instrument, octave, "x----", "-x---", "--x--", "---x-", SX);
 	b(6, H+Id, instrument, octave, "----x", "--x--", "x----", SX);
 	rest(H-Id);
 	b(5, Q, instrument, octave, "-x-", SX);
-	rest(Q);
+	rest(Q-T);
 	b(5, Q, instrument, octave, "-x-", "-n-", SX);
 	b(5, Q, instrument, octave, "-x-", SX);
 	b(4, H, instrument, octave, "-x-", SX);
 	b(4, H, instrument, octave, "-d-", SX);
+	rest(T);
 	setSustain(0.99995);
 	checkMeasure();
 	setTempo(200);
@@ -104,11 +103,7 @@ main()
 
 	openOutput("bass.rra",0,0);
 
-	//bridge(instrument, octave);
-	//goto end;
-
 	int i;
-	goto bridge;
 
 	//v r v r b v r
 	intro(instrument, octave);
@@ -121,11 +116,13 @@ main()
 	for (i=0; i<2; i++) {
 		verse(instrument, octave);
 	}
-bridge:
 	for (i=0; i<2; i++) {
 		chorus(instrument, octave);
 	}
-	bridge(instrument, octave);
+bridge:
+	for (i=0; i<2; i++) {
+		bridge(instrument, octave);
+	}
 	for (i=0; i<2; i++) {
 		verse(instrument, octave);
 	}

@@ -65,4 +65,4 @@ rraidentity : rraidentity.c
 .PHONY : clean
 
 clean :
-		rm -f $(RRA) $(SRRA) master.rra mix.rra pianomix.rra master.mp3
+		rm -f $(RRA) $(SRRA) master.rra mix.rra pianomix.rra master.mp3 pianobassmix.rra

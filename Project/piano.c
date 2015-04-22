@@ -6,7 +6,6 @@
 
 
 #define dir "/usr/local/share/samples/"
-//#define base "piano/bright_"
 #define base "piano/bright_"
 
 /* change PROGRAM_NAME and PROGRAM_VERSION appropriately */
@@ -144,11 +143,7 @@ main()
 
 	openOutput("piano.rra",0,0);
 
-	//bridge(instrument, octave);
-	//goto end;
-
 	int i;
-	goto bridge;
 	
 	//v r v r b v r
 	intro(instrument, octave);
@@ -161,11 +156,13 @@ main()
 	for (i=0; i<2; i++) {
 		verse(instrument, octave);
 	}
-bridge:
 	for (i=0; i<2; i++) {
 		chorus(instrument, octave);
 	}
-	bridge(instrument, octave);
+bridge:
+	for (i=0; i<2; i++) {
+		bridge(instrument, octave);
+	}
 	for (i=0; i<2; i++) {
 		verse(instrument, octave);
 	}

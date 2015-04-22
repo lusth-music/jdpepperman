@@ -6,7 +6,6 @@
 
 
 #define dir "/usr/local/share/samples/"
-//#define base "guitar/bright_"
 #define base "guitar-electric/sox_"
 
 /* change PROGRAM_NAME and PROGRAM_VERSION appropriately */
@@ -122,7 +121,6 @@ main()
 	openOutput("guitar.rra",0,0);
 
 	int i;
-	goto bridge;
 
 	//v r v r b v r
 	intro(instrument, octave);
@@ -139,7 +137,9 @@ bridge:
 	for (i=0; i<2; i++) {
 		chorus(instrument, octave);
 	}
-	bridge(instrument, octave);
+	for (i=0; i<2; i++) {
+		bridge(instrument, octave);
+	}
 	for (i=0; i<2; i++) {
 		verse(instrument, octave);
 	}
