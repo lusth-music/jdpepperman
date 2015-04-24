@@ -105,12 +105,13 @@ int
 main()
 {
 	int instrument;
-	int octave = 4;
+	int octave = 3;
 
 	songInit();
 
 	instrument = readScale(dir,base);
 
+	setKey(G);
 	setTempo(200);
 	setTime(8,4);
 	setStride(0.05);

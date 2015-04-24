@@ -62,19 +62,20 @@ static void
 bridge(int instrument, int octave)
 {
 	setTempo(100);
-	octave = octave + 1;
-	//6 1 5 4
-	rest(H-T);
-	b(6, H+T, instrument, octave, "x----", "-x---", "--x--", "---x-", SX);
-	b(6, H+Id, instrument, octave, "----x", "--x--", "x----", SX);
-	rest(H-Id-T);
-	b(5, Q, instrument, octave, "-x-", SX);
-	rest(Q-T);
-	b(5, Q, instrument, octave, "-x-", "-n-", SX);
-	b(5, Q, instrument, octave, "-x-", SX);
-	b(4, H, instrument, octave, "-x-", SX);
-	b(4, H, instrument, octave, "-d-", SX);
-	rest(T+T);
+	rest(W+W+W+W);
+	//octave = octave + 1;
+	////6 1 5 4
+	//rest(H-T);
+	//b(6, H+T, instrument, octave, "x----", "-x---", "--x--", "---x-", SX);
+	//b(6, H+Id, instrument, octave, "----x", "--x--", "x----", SX);
+	//rest(H-Id-T);
+	//b(5, Q, instrument, octave, "-x-", SX);
+	//rest(Q-T);
+	//b(5, Q, instrument, octave, "-x-", "-n-", SX);
+	//b(5, Q, instrument, octave, "-x-", SX);
+	//b(4, H, instrument, octave, "-x-", SX);
+	//b(4, H, instrument, octave, "-d-", SX);
+	//rest(T+T);
 	setTempo(200);
 }
 
@@ -82,12 +83,13 @@ int
 main()
 {
 	int instrument;
-	int octave = 3;
+	int octave = 2;
 
 	songInit();
 
 	instrument = readScale(dir,base);
 
+	setKey(G);
 	setTempo(200);
 	setTime(8,4);
 	setStride(0.05);
