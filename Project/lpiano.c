@@ -73,11 +73,8 @@ chorus(int instrument, int octave)
 static void 
 intro(int instrument, int octave)
 {
-	rest(W+W+W+W);
-	rest(W+W+W+W);
-	rest(W+W+W+W);
-	rest(W+W+W+W);
-	verse(instrument, octave);
+	rest(W+W+W+W+W+W+W+W);
+	rest(W+W+W+W+W+W+W+W);
 	verse(instrument, octave);
 }
 
@@ -93,6 +90,12 @@ bridge(int instrument, int octave)
 	c(4, W, instrument, octave);
 	checkMeasure();
 	setTempo(200);
+}
+
+static void
+outro(int instrument, int octave)
+{
+	chorus(instrument, octave);
 }
 
 int
@@ -113,6 +116,7 @@ main()
 
 	int i;
 	openOutput("lpiano.rra",0,0);
+	
 
 	intro(instrument, octave);
 	for (i=0; i<2; i++) {
@@ -137,6 +141,7 @@ bridge:
 	for (i=0; i<2; i++) {
 		chorus(instrument, octave);
 	}
+	outro(instrument, octave);
 	
 	end:
 	closeOutput();

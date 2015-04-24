@@ -44,13 +44,10 @@ bridge()
 static void
 intro()
 {
-	rest(W+W+W+W);
-	rest(W+W+W+W);
-	rest(W+W+W+W);
-	rest(W+W+W+W);
-	rest(W+W+W+W);
-	rest(W+W+W+W);
-	verse();
+	int i;
+	for (i=0; i<3; i++) {
+		rest(W+W+W+W+W+W+W+W);
+	}
 }
 
 int
@@ -65,6 +62,7 @@ main()
 	setSustain(0.99995);
 	setAmplitude(0.4);
 	openOutput("drums.rra",0,0);
+	
 
 	int i;
 
@@ -79,10 +77,10 @@ main()
 	for (i=0; i<2; i++) {
 		verse();
 	}
-bridge:
 	for (i=0; i<2; i++) {
 		chorus();
 	}
+bridge:
 	for (i=0; i<2; i++) {
 		bridge();
 	}

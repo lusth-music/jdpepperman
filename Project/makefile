@@ -20,8 +20,8 @@ mix.rra		: $(RRA)
 pianomix.rra	: piano.rra lpiano.rra
 		rrafastmixer piano.rra lpiano.rra > pianomix.rra
 
-pianobassmix.rra	: piano.rra lpiano.rra bass.rra
-		rrafastmixer piano.rra lpiano.rra bass.rra > pianobassmix.rra
+pianobassmix.rra	: piano.rra lpiano.rra bass.rra drums.rra
+		rrafastmixer piano.rra lpiano.rra bass.rra drums.rra > pianobassmix.rra
 
 play	: mix.rra
 		rplay mix.rra

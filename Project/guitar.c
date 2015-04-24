@@ -96,9 +96,8 @@ static void
 intro(int instrument, int octave)
 {
 	int i;
-	for (i=0; i<4; i++) {
-		rest(W+W+W+W);
-		rest(W+W+W+W);
+	for (i=0; i<3; i++) {
+		rest(W+W+W+W+W+W+W+W);
 	}
 }
 

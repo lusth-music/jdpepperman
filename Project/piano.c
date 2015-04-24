@@ -86,7 +86,7 @@ static void
 intro(int instrument, int octave)
 {
 	int i;
-	for (i=0; i<4; i++) {
+	for (i=0; i<3; i++) {
 		verse(instrument, octave);
 	}
 }
@@ -125,6 +125,12 @@ bridge(int instrument, int octave)
 	setTempo(200);
 }
 
+static void
+outro(int instrument, int octave)
+{
+	chorus(instrument, octave);
+}
+
 int
 main()
 {
@@ -142,6 +148,7 @@ main()
 	setSustain(0.99995);
 
 	openOutput("piano.rra",0,0);
+	
 
 	int i;
 	
@@ -169,6 +176,7 @@ bridge:
 	for (i=0; i<2; i++) {
 		chorus(instrument, octave);
 	}
+	outro(instrument, octave);
 	
 	end:
 	closeOutput();
